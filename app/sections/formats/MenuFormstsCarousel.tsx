@@ -6,51 +6,57 @@ import { useState, useRef, useEffect } from "react";
 const MENUS = [
   {
     id: 1,
-    title: "Меню свадьбы на 1 персону",
+    title: "Пример свадебного меню на 1 персону",
     dishes: [
-      { name: "Салат Цезарь", description: "С курицей и соусом Цезарь", price: "250 руб" },
-      { name: "Суп гаспачо", description: "Холодный томатный суп", price: "180 руб" },
-      { name: "Филе миньон", description: "С овощами гриль", price: "450 руб" },
-      { name: "Десерт тирамису", description: "Классический итальянский", price: "200 руб" },
-      { name: "Суп гаспачо", description: "Холодный томатный суп", price: "180 руб" },
-      { name: "Филе миньон", description: "С овощами гриль", price: "450 руб" },
-      { name: "Десерт тирамису", description: "Классический итальянский", price: "200 руб" },
-      { name: "Суп гаспачо", description: "Холодный томатный суп", price: "180 руб" },
-      { name: "Филе миньон", description: "С овощами гриль", price: "450 руб" },
-      { name: "Десерт тирамису", description: "Классический итальянский", price: "200 руб" },
+      { name: "Салат Цезарь c цыпленком", description: "Жареное куриное филе с листьями салата, сухариками, томатами чери и сыром пармезан в соусе Цезарь", weight: "250" },
+      { name: "Мясная гастрономия в нарезке", description: "", weight: "180" },
+      { name: "Филе миньон", description: "С овощами гриль", weight: "450" },
+      { name: "Десерт тирамису", description: "Классический итальянский", weight: "200" },
+      { name: "Суп гаспачо", description: "Холодный томатный суп", weight: "180" },
+      { name: "Филе миньон", description: "С овощами гриль", weight: "450" },
+      { name: "Десерт тирамису", description: "Классический итальянский", weight: "200" },
+      { name: "Суп гаспачо", description: "Холодный томатный суп", weight: "180" },
+      { name: "Филе миньон", description: "С овощами гриль", weight: "450" },
+      { name: "Десерт тирамису", description: "Классический итальянский", weight: "200" },
     ],
     totalWeight: "1200 г",
     totalPrice: "1450 руб",
   },
-  {
-    id: 2,
-    title: "Меню юбилея на 1 персону",
+    {
+    id: 1,
+    title: "Меню свадьбы на 1 персону",
     dishes: [
-      { name: "Салат греческий", description: "С оливками и фетой", price: "200 руб" },
-      { name: "Суп крем из грибов", description: "Нежный крем-суп", price: "180 руб" },
-      { name: "Куриная грудка с соусом", description: "Подается с картофелем", price: "400 руб" },
-      { name: "Чизкейк", description: "С клубничным соусом", price: "220 руб" },
-      { name: "Суп гаспачо", description: "Холодный томатный суп", price: "180 руб" },
-      { name: "Филе миньон", description: "С овощами гриль", price: "450 руб" },
-      { name: "Десерт тирамису", description: "Классический итальянский", price: "200 руб" },
+      { name: "Салат Цезарь", description: "С курицей и соусом Цезарь", weight: "250" },
+      { name: "Суп гаспачо", description: "Холодный томатный суп", weight: "180" },
+      { name: "Филе миньон", description: "С овощами гриль", weight: "450" },
+      { name: "Десерт тирамису", description: "Классический итальянский", weight: "200" },
+      { name: "Суп гаспачо", description: "Холодный томатный суп", weight: "180" },
+      { name: "Филе миньон", description: "С овощами гриль", weight: "450" },
+      { name: "Десерт тирамису", description: "Классический итальянский", weight: "200" },
+      { name: "Суп гаспачо", description: "Холодный томатный суп", weight: "180" },
+      { name: "Филе миньон", description: "С овощами гриль", weight: "450" },
+      { name: "Десерт тирамису", description: "Классический итальянский", weight: "200" },
+      { name: "Суп гаспачо", description: "Холодный томатный суп", weight: "180" },
     ],
-    totalWeight: "1100 г",
-    totalPrice: "1400 руб",
+    totalWeight: "1200 г",
+    totalPrice: "1450 руб",
   },
     {
-    id: 2,
-    title: "Меню ",
+    id: 1,
+    title: "Меню свадьбы на 1 персону",
     dishes: [
-      { name: "Салат греческий", description: "С оливками и фетой", price: "200 руб" },
-      { name: "Суп крем из грибов", description: "Нежный крем-суп", price: "180 руб" },
-      { name: "Куриная грудка с соусом", description: "Подается с картофелем", price: "400 руб" },
-      { name: "Чизкейк", description: "С клубничным соусом", price: "220 руб" },
+      { name: "Салат Цезарь", description: "С курицей и соусом Цезарь", weight: "250" },
+      { name: "Суп гаспачо", description: "Холодный томатный суп", weight: "180" },
+      { name: "Филе миньон", description: "С овощами гриль", weight: "450" },
+      { name: "Десерт тирамису", description: "Классический итальянский", weight: "200" },
+      { name: "Суп гаспачо", description: "Холодный томатный суп", weight: "180" },
+      { name: "Филе миньон", description: "С овощами гриль", weight: "450" },
+      { name: "Десерт тирамису", description: "Классический итальянский", weight: "200" },
     ],
-    totalWeight: "1100 г",
-    totalPrice: "1400 руб",
+    totalWeight: "1200 г",
+    totalPrice: "1450 руб",
   },
-  
-  // добавьте остальные меню...
+
 ];
 
 // создаём "клонированный" массив для loop
@@ -122,33 +128,33 @@ export default function MenuFormatsCarousel() {
         onTouchEnd={onTouchEnd}
       >
         {EXTENDED_MENUS.map((menu, i) => (
-          <div key={i} className="w-full flex-shrink-0 px-4 md:px-8">
-            <div className="mx-auto max-w-3xl rounded-2xl border border-neutral-200 bg-white p-6 md:p-8">
-              <h2 className="mb-6 text-center text-xl font-semibold md:text-2xl">{menu.title}</h2>
+          <div key={i} className="w-full shrink-0 px-4 md:px-8">
+            <div className="mx-auto max-w-3xl rounded-2xl border border-neutral-500 bg-gray-800 p-6 md:p-8">
+              <h2 className="mb-6 text-center text-xl font-semibold md:text-2xl text-amber-500">{menu.title}</h2>
 
               <ul className="space-y-3">
                 {menu.dishes.map((dish, j) => (
                   <li
                     key={j}
-                    className="flex flex-col gap-1 border-b border-neutral-200 pb-3 md:flex-row md:items-center md:justify-between"
+                    className="flex flex-col gap-1 border-b border-neutral-500 pb-3 md:flex-row md:items-center md:justify-between"
                   >
                     <div>
-                      <p className="font-medium">{dish.name}</p>
-                      <p className="text-sm text-neutral-500">{dish.description}</p>
+                      <p className="font-medium text-neutral-300">{dish.name}</p>
+                      <p className="text-sm text-neutral-400">{dish.description}</p>
                     </div>
-                    <span className="font-semibold">{dish.price}</span>
+                    <span className="font-semibold text-neutral-300 whitespace-nowrap">{dish.weight} г</span>
                   </li>
                 ))}
               </ul>
 
-              <div className="mt-6 space-y-2 border-t pt-4">
-                <div className="flex justify-between font-medium">
+              <div className="mt-6 space-y-2 border-t border-neutral-500  pt-4">
+                <div className="flex justify-between font-medium text-neutral-300">
                   <span>Итого вес еды на одного гостя</span>
-                  <span>{menu.totalWeight}</span>
+                  <span className="text-amber-400">{menu.totalWeight}</span>
                 </div>
-                <div className="flex justify-between text-lg font-semibold">
+                <div className="flex justify-between text-lg font-semibold text-neutral-300">
                   <span>Итого цена на одного гостя</span>
-                  <span>{menu.totalPrice}</span>
+                  <span className="text-amber-400">{menu.totalPrice}</span>
                 </div>
               </div>
             </div>
