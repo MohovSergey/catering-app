@@ -1,0 +1,173 @@
+"use client";
+
+import { useState, useRef, useEffect } from "react";
+
+// Меню с возможностью ручного задания блюд
+const MENUS = [
+  {
+    id: 1,
+    title: "Меню свадьбы на 1 персону",
+    dishes: [
+      { name: "Салат Цезарь", description: "С курицей и соусом Цезарь", price: "250 руб" },
+      { name: "Суп гаспачо", description: "Холодный томатный суп", price: "180 руб" },
+      { name: "Филе миньон", description: "С овощами гриль", price: "450 руб" },
+      { name: "Десерт тирамису", description: "Классический итальянский", price: "200 руб" },
+      { name: "Суп гаспачо", description: "Холодный томатный суп", price: "180 руб" },
+      { name: "Филе миньон", description: "С овощами гриль", price: "450 руб" },
+      { name: "Десерт тирамису", description: "Классический итальянский", price: "200 руб" },
+      { name: "Суп гаспачо", description: "Холодный томатный суп", price: "180 руб" },
+      { name: "Филе миньон", description: "С овощами гриль", price: "450 руб" },
+      { name: "Десерт тирамису", description: "Классический итальянский", price: "200 руб" },
+    ],
+    totalWeight: "1200 г",
+    totalPrice: "1450 руб",
+  },
+  {
+    id: 2,
+    title: "Меню юбилея на 1 персону",
+    dishes: [
+      { name: "Салат греческий", description: "С оливками и фетой", price: "200 руб" },
+      { name: "Суп крем из грибов", description: "Нежный крем-суп", price: "180 руб" },
+      { name: "Куриная грудка с соусом", description: "Подается с картофелем", price: "400 руб" },
+      { name: "Чизкейк", description: "С клубничным соусом", price: "220 руб" },
+      { name: "Суп гаспачо", description: "Холодный томатный суп", price: "180 руб" },
+      { name: "Филе миньон", description: "С овощами гриль", price: "450 руб" },
+      { name: "Десерт тирамису", description: "Классический итальянский", price: "200 руб" },
+    ],
+    totalWeight: "1100 г",
+    totalPrice: "1400 руб",
+  },
+    {
+    id: 2,
+    title: "Меню ",
+    dishes: [
+      { name: "Салат греческий", description: "С оливками и фетой", price: "200 руб" },
+      { name: "Суп крем из грибов", description: "Нежный крем-суп", price: "180 руб" },
+      { name: "Куриная грудка с соусом", description: "Подается с картофелем", price: "400 руб" },
+      { name: "Чизкейк", description: "С клубничным соусом", price: "220 руб" },
+    ],
+    totalWeight: "1100 г",
+    totalPrice: "1400 руб",
+  },
+  
+  // добавьте остальные меню...
+];
+
+// создаём "клонированный" массив для loop
+const EXTENDED_MENUS = [MENUS[MENUS.length - 1], ...MENUS, MENUS[0]];
+
+export default function MenuFormatsCarousel() {
+  const [active, setActive] = useState(1); // старт с первого реального слайда
+  const [animate, setAnimate] = useState(true);
+  const startX = useRef<number | null>(null);
+
+  const prev = () => setActive((v) => v - 1);
+  const next = () => setActive((v) => v + 1);
+
+  const onTouchStart = (e: React.TouchEvent) => {
+    startX.current = e.touches[0].clientX;
+  };
+
+  const onTouchEnd = (e: React.TouchEvent) => {
+    if (startX.current === null) return;
+    const diff = startX.current - e.changedTouches[0].clientX;
+    if (diff > 50) next();
+    if (diff < -50) prev();
+    startX.current = null;
+  };
+
+  useEffect(() => {
+    if (active === EXTENDED_MENUS.length - 1) {
+      setTimeout(() => {
+        setAnimate(false);
+        setActive(1);
+      }, 400);
+    }
+    if (active === 0) {
+      setTimeout(() => {
+        setAnimate(false);
+        setActive(EXTENDED_MENUS.length - 2);
+      }, 400);
+    }
+  }, [active]);
+
+  useEffect(() => {
+    if (!animate) {
+      requestAnimationFrame(() => setAnimate(true));
+    }
+  }, [animate]);
+
+  return (
+    <section className="relative w-full overflow-hidden">
+      {/* arrows */}
+      <button
+        onClick={prev}
+        className="hidden md:flex absolute left-4 top-1/2 -translate-y-1/2 z-10 h-10 w-10 items-center justify-center rounded-full bg-black/50 text-white"
+      >
+        ‹
+      </button>
+
+      <button
+        onClick={next}
+        className="hidden md:flex absolute right-4 top-1/2 -translate-y-1/2 z-10 h-10 w-10 items-center justify-center rounded-full bg-black/50 text-white"
+      >
+        ›
+      </button>
+
+      {/* track */}
+      <div
+        className={`flex ${animate ? "transition-transform duration-500 ease-out" : ""}`}
+        style={{ transform: `translateX(-${active * 100}%)` }}
+        onTouchStart={onTouchStart}
+        onTouchEnd={onTouchEnd}
+      >
+        {EXTENDED_MENUS.map((menu, i) => (
+          <div key={i} className="w-full flex-shrink-0 px-4 md:px-8">
+            <div className="mx-auto max-w-3xl rounded-2xl border border-neutral-200 bg-white p-6 md:p-8">
+              <h2 className="mb-6 text-center text-xl font-semibold md:text-2xl">{menu.title}</h2>
+
+              <ul className="space-y-3">
+                {menu.dishes.map((dish, j) => (
+                  <li
+                    key={j}
+                    className="flex flex-col gap-1 border-b border-neutral-200 pb-3 md:flex-row md:items-center md:justify-between"
+                  >
+                    <div>
+                      <p className="font-medium">{dish.name}</p>
+                      <p className="text-sm text-neutral-500">{dish.description}</p>
+                    </div>
+                    <span className="font-semibold">{dish.price}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <div className="mt-6 space-y-2 border-t pt-4">
+                <div className="flex justify-between font-medium">
+                  <span>Итого вес еды на одного гостя</span>
+                  <span>{menu.totalWeight}</span>
+                </div>
+                <div className="flex justify-between text-lg font-semibold">
+                  <span>Итого цена на одного гостя</span>
+                  <span>{menu.totalPrice}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* dots */}
+      <div className="mt-6 flex justify-center gap-2">
+        {MENUS.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => setActive(i + 1)}
+            className={`h-2 w-2 rounded-full ${
+              active === i + 1 ? "bg-neutral-900" : "bg-neutral-300"
+            }`}
+          />
+        ))}
+      </div>
+    </section>
+  );
+}

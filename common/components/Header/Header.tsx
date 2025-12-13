@@ -1,32 +1,56 @@
+import Link from "next/link";
+
 const Header = () => {
-    return (
-      <header className="w-full h-15 flex items-center justify-between px-6 bg-gray-800">
-  {/* Логотип */}
-  <div className="flex items-center">
-    <img src="/logo/logo.svg" alt="Логотип" className="h-10" />
-  </div>
+  return (
+    <header className="w-full h-15 flex items-center justify-between px-6 bg-gray-800">
+      {/* logo */}
+      <div className="flex items-center">
+        <img src="/logo/logo.svg" alt="Логотип" className="h-10" />
+      </div>
 
-  {/* Десктоп меню */}
-  <nav className="hidden md:flex space-x-6">
-    <a href="#home" className="text-white hover:text-gray-300">Главная</a>
-    <a href="#menu" className="text-white hover:text-gray-300">Форматы меню</a>
-    <a href="#menu" className="text-white hover:text-gray-300">Меню с ценами</a>
-    <a href="#works" className="text-white hover:text-gray-300">Примеры работ</a>
-    <a href="#faq" className="text-white hover:text-gray-300">FAQ</a>
-    <a href="#contact" className="text-white hover:text-gray-300">Контакты</a>
-  </nav>
+      {/* desktop menu */}
+      <nav className="hidden md:flex space-x-6">
+        <Link href="/" className="text-white hover:text-gray-300">
+          Главная
+        </Link>
+        <Link href="/menu-formats" className="text-white hover:text-gray-300">
+          Форматы меню
+        </Link>
+        <Link href="/menu" className="text-white hover:text-gray-300">
+          Меню с ценами
+        </Link>
+        <Link href="/gallery" className="text-white hover:text-gray-300">
+          Примеры работ
+        </Link>
+        <Link href="/faq" className="text-white hover:text-gray-300">
+          FAQ
+        </Link>
+        <Link href="/contact" className="text-white hover:text-gray-300">
+          Связаться
+        </Link>
+      </nav>
 
-  {/* Бургер для мобильных */}
-  <div className="md:hidden">
-    <button>
-      {/* Иконка бургера */}
-      <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
-      </svg>
-    </button>
-  </div>
-</header>
-    );
+      {/* mobile burger */}
+      <div className="md:hidden">
+        <button>
+          {/* burger-ico */}
+          <svg
+            className="w-6 h-6 text-white"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M4 6h16M4 12h16M4 18h16"
+            />
+          </svg>
+        </button>
+      </div>
+    </header>
+  );
 };
 
 export default Header;
