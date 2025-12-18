@@ -3,7 +3,7 @@ import { FaInstagram, FaTelegramPlane, FaPhone, FaEnvelope } from "react-icons/f
 
 const Footer = () => {
   return (
-    <footer className="w-full bg-gray-800 text-white py-8 px-6">
+    <footer className="w-full bg-gray-800 text-white py-8 px-6 max-w-400 mx-auto">
       <div className="max-w-300 mx-auto flex flex-col md:flex-row justify-between gap-8">
 
         {/* Юридическая информация */}

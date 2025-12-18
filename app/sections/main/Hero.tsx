@@ -25,7 +25,7 @@ export default function HeroBanner() {
   }, []);
 
   return (
-    <section className="relative w-full h-screen overflow-hidden max-w-300 mx-auto px-4">
+    <section className="relative w-full h-screen overflow-hidden max-w-400 mx-auto px-4">
       {/* изображения */}
       {images.map((src, idx) => (
         <div key={idx} className="absolute inset-0">
