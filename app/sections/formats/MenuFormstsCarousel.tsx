@@ -1,63 +1,44 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
+import { MENU, MenuSection, Dish } from "@/feature/model/data/menuData";
 
-const MENUS = [
+
+const MENU_CARDS = [
   {
     id: 1,
     title: "Пример свадебного меню на 1 персону",
     dishes: [
-      { name: "Салат Цезарь c цыпленком", description: "Жареное куриное филе с листьями салата, сухариками, томатами чери и сыром пармезан в соусе Цезарь", weight: 250 },
-      { name: "Мясная гастрономия в нарезке", description: "", weight: 100 },
-      { name: "Филе миньон", description: "С овощами гриль", weight: 150 },
-      { name: "Десерт тирамису", description: "Классический итальянский", weight: 200 },
-      { name: "Суп гаспачо", description: "Холодный томатный суп", weight: 150 },
-      { name: "Филе миньон", description: "С овощами гриль", weight: 300 },
-      { name: "Десерт тирамису", description: "Классический итальянский", weight: 150 },
-      { name: "Суп гаспачо", description: "Холодный томатный суп", weight: 150 },
-      { name: "Филе миньон", description: "С овощами гриль", weight: 150 },
-      { name: "Десерт тирамису", description: "Классический итальянский", weight: 150 },
+      ...MENU[0].dishes.slice(0, 2), // первые 2 холодные закуски
+      ...MENU[1].dishes.slice(0, 3), // первые 3 салата
     ],
     totalPrice: "1450 руб",
   },
-    {
-    id: 1,
-    title: "Фуршет на одну персону (800)",
+  {
+    id: 2,
+    title: "Фуршет на одну персону",
     dishes: [
-      { name: "Филе миньон", description: "С овощами гриль", weight: 100 },
-      { name: "Десерт тирамису", description: "Классический итальянский", weight: 100 },
-      { name: "Суп гаспачо", description: "Холодный томатный суп", weight: 100 },
-      { name: "Филе миньон", description: "С овощами гриль", weight: 100 },
-      { name: "Десерт тирамису", description: "Классический итальянский", weight: 100 },
-      { name: "Суп гаспачо", description: "Холодный томатный суп", weight: 100 },
-      { name: "Филе миньон", description: "С овощами гриль", weight: 100 },
-      { name: "Десерт тирамису", description: "Классический итальянский", weight: 100 },
+      ...MENU[0].dishes.slice(1, 3),
+      ...MENU[1].dishes.slice(2, 5),
     ],
-    totalPrice: "1450 руб",
+    totalPrice: "1600 руб",
   },
-    {
-    id: 1,
+  {
+    id: 3,
     title: "Меню свадьбы на 1 персону",
     dishes: [
-      { name: "Филе миньон", description: "С овощами гриль", weight: 150 },
-      { name: "Десерт тирамису", description: "Классический итальянский", weight: 200 },
-      { name: "Суп гаспачо", description: "Холодный томатный суп", weight: 150 },
-      { name: "Филе миньон", description: "С овощами гриль", weight: 300 },
-      { name: "Десерт тирамису", description: "Классический итальянский", weight: 150 },
-      { name: "Суп гаспачо", description: "Холодный томатный суп", weight: 150 },
-      { name: "Филе миньон", description: "С овощами гриль", weight: 150 },
-      { name: "Десерт тирамису", description: "Классический итальянский", weight: 150 },
+      ...MENU[0].dishes.slice(0, 3),
+      ...MENU[1].dishes.slice(0, 2),
     ],
-    totalPrice: "1450 руб",
+    totalPrice: "1700 руб",
   },
-
 ];
 
-// loop
-const EXTENDED_MENUS = [MENUS[MENUS.length - 1], ...MENUS, MENUS[0]];
+
+const EXTENDED_MENUS = [MENU_CARDS[MENU_CARDS.length - 1], ...MENU_CARDS, MENU_CARDS[0]];
 
 export default function MenuFormatsCarousel() {
-  const [active, setActive] = useState(1); // start of first real slide
+  const [active, setActive] = useState(1);
   const [animate, setAnimate] = useState(true);
   const startX = useRef<number | null>(null);
 
@@ -92,9 +73,7 @@ export default function MenuFormatsCarousel() {
   }, [active]);
 
   useEffect(() => {
-    if (!animate) {
-      requestAnimationFrame(() => setAnimate(true));
-    }
+    if (!animate) requestAnimationFrame(() => setAnimate(true));
   }, [animate]);
 
   return (
@@ -106,7 +85,6 @@ export default function MenuFormatsCarousel() {
       >
         ‹
       </button>
-
       <button
         onClick={next}
         className="hidden md:flex absolute right-4 top-1/2 -translate-y-1/2 z-10 h-10 w-10 items-center justify-center rounded-full bg-black/50 text-white"
@@ -127,7 +105,7 @@ export default function MenuFormatsCarousel() {
               <h2 className="mb-6 text-center text-xl font-semibold md:text-2xl text-amber-500">{menu.title}</h2>
 
               <ul className="space-y-3">
-                {menu.dishes.map((dish, j) => (
+                {menu.dishes.map((dish: Dish, j) => (
                   <li
                     key={j}
                     className="flex flex-col gap-1 border-b border-neutral-500 pb-3 md:flex-row md:items-center md:justify-between"
@@ -141,7 +119,7 @@ export default function MenuFormatsCarousel() {
                 ))}
               </ul>
 
-              <div className="mt-6 space-y-2 border-t border-neutral-500  pt-4">
+              <div className="mt-6 space-y-2 border-t border-neutral-500 pt-4">
                 <div className="flex justify-between font-medium text-neutral-300">
                   <span>Итого вес еды на одного гостя</span>
                   <span className="text-amber-400">{menu.dishes.reduce((acc, dish) => acc + dish.weight, 0)} г</span>
@@ -158,13 +136,11 @@ export default function MenuFormatsCarousel() {
 
       {/* dots */}
       <div className="mt-6 flex justify-center gap-2">
-        {MENUS.map((_, i) => (
+        {MENU_CARDS.map((_, i) => (
           <button
             key={i}
             onClick={() => setActive(i + 1)}
-            className={`h-2 w-2 rounded-full ${
-              active === i + 1 ? "bg-neutral-900" : "bg-neutral-300"
-            }`}
+            className={`h-2 w-2 rounded-full ${active === i + 1 ? "bg-neutral-900" : "bg-neutral-300"}`}
           />
         ))}
       </div>
