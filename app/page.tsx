@@ -1,4 +1,4 @@
-import Footer from "@/common/components/Header/Footer";
+import Footer from "@/common/components/Footer/Footer";
 import Header from "@/common/components/Header/Header";
 import FloatingContacts from "@/feature/price-calculator/ui/FloatingContacts";
 import About from "./sections/main/About";

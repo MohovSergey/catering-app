@@ -1,0 +1,9 @@
+.noTimeIcon::-webkit-calendar-picker-indicator {
+  display: none;
+  -webkit-appearance: none;
+}
+
+.noTimeIcon::-moz-inner-spin-button,
+.noTimeIcon::-moz-calendar-picker-indicator {
+  display: none;
+}

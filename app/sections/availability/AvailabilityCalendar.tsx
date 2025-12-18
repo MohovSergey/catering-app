@@ -5,10 +5,10 @@ import { useState, useEffect } from 'react';
 const WEEK_DAYS = ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс'];
 
 const getDaysInMonth = (year: number, month: number) =>
-  new Date(year, month, 0).getDate(); // месяц 1-12
+  new Date(year, month, 0).getDate();
 
 interface Props {
-  month: number; // 1-12
+  month: number;
   year: number;
   busyDays?: number[];
 }
@@ -18,14 +18,13 @@ export default function AvailabilityCalendar({ month, year, busyDays = [] }: Pro
 
   return (
     <section className="w-full max-w-sm sm:max-w-md mx-auto text-white">
-      {/* дни недели */}
+
       <div className="grid grid-cols-7 gap-1 mb-2 text-xs text-gray-400">
         {WEEK_DAYS.map((day) => (
-          <div key={day} className="text-center">{day}</div>
+          <div key={crypto.randomUUID()} className="text-center">{day}</div>
         ))}
       </div>
 
-      {/* календарь */}
       <div className="grid grid-cols-7 gap-1">
         {Array.from({ length: daysCount }, (_, i) => {
           const day = i + 1;
