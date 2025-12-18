@@ -2,7 +2,6 @@
 
 import { useState, useRef, useEffect } from "react";
 
-// Меню с возможностью ручного задания блюд
 const MENUS = [
   {
     id: 1,
@@ -54,11 +53,11 @@ const MENUS = [
 
 ];
 
-// создаём "клонированный" массив для loop
+// loop
 const EXTENDED_MENUS = [MENUS[MENUS.length - 1], ...MENUS, MENUS[0]];
 
 export default function MenuFormatsCarousel() {
-  const [active, setActive] = useState(1); // старт с первого реального слайда
+  const [active, setActive] = useState(1); // start of first real slide
   const [animate, setAnimate] = useState(true);
   const startX = useRef<number | null>(null);
 

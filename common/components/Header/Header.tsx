@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const Header = () => {
   return (
-    <header className="w-full h-15 flex items-center justify-between px-6 bg-gray-800">
+    <header className="w-full h-15 flex items-center justify-between px-6 bg-gray-800 max-w-300 mx-auto">
       {/* logo */}
       <div className="flex items-center">
         <img src="/logo/logo.svg" alt="Логотип" className="h-10" />
