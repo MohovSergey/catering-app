@@ -1,14 +1,11 @@
 'use client';
 
-import { useState } from "react";
 import Footer from "@/common/components/Footer/Footer";
 import Header from "@/common/components/Header/Header";
-import FloatingContacts from "@/feature/price-calculator/ui/FloatingContacts";
-import About from "./sections/main/About";
-import { Availability } from "./sections/main/Availability";
-import HeroBanner from "./sections/main/Hero";
-import EventsGallery from "@/feature/price-calculator/ui/EventsGallery";
 import CallRequestModal from "@/common/components/Modals/CallRequestModal";
+import FloatingContacts from "@/feature/price-calculator/ui/FloatingContacts";
+import { useState } from "react";
+import FAQPage from "../sections/FAQ/FAQ";
 
 export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -20,19 +17,9 @@ export default function Home() {
     <div className="w-full bg-gray-800">
 
       <Header onOpenModal={openModal} />
-
-
-      <HeroBanner onOpenModal={openModal} />
-
-      <About />
-      <EventsGallery />
-      <Availability />
+      <FAQPage />
       <Footer />
-
-
       <FloatingContacts onOpenModal={openModal} />
-
-
       <CallRequestModal isOpen={isModalOpen} onClose={closeModal} />
     </div>
   );
