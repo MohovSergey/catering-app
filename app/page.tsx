@@ -9,6 +9,7 @@ import { Availability } from "./sections/main/Availability";
 import HeroBanner from "./sections/main/Hero";
 import EventsGallery from "@/feature/price-calculator/ui/EventsGallery";
 import CallRequestModal from "@/common/components/Modals/CallRequestModal";
+import MenuFormatsCarousel from "./sections/main/MenuFormstsCarousel";
 
 export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -25,6 +26,7 @@ export default function Home() {
       <HeroBanner onOpenModal={openModal} />
 
       <About />
+      <MenuFormatsCarousel />
       <EventsGallery />
       <Availability />
       <Footer />

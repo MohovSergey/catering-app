@@ -20,7 +20,7 @@ export const MENU: MenuSection[] = [
     id: "cold-appetizers",
     title: "Холодные закуски",
     dishes: [
-      { name: "Сельдь под шубой", description: "Классическая закуска", weight: 1260, price: "1250 руб" },
+      { name: "Сельдь под шубой", description: "Классическая закуска", weight: 130, price: "1555 руб" },
       { name: "Овощное ассорти", description: "Свежие сезонные овощи", weight: 150, price: "200 руб", vegetarian: true },
       { name: "Мясная нарезка", description: "Ветчина, салями, буженина", weight: 200, price: "450 руб" },
       { name: "Сырная тарелка", description: "Ассорти сыров с сухофруктами", weight: 180, price: "350 руб", vegetarian: true },

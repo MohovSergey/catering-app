@@ -30,9 +30,7 @@ const Footer = () => {
         <div className="flex-1 text-sm md:text-base flex flex-col gap-2">
           <p className="font-semibold">Разделы:</p>
           <Link href="/" className="hover:text-orange-500">Главная</Link>
-          <Link href="/menu-formats" className="hover:text-orange-500">Форматы меню</Link>
-          <Link href="/menu" className="hover:text-orange-500">Меню с ценами</Link>
-          <Link href="/gallery" className="hover:text-orange-500">Примеры работ</Link>
+          <Link href="/menu" className="hover:text-orange-500">Меню и услуги</Link>
           <Link href="/faq" className="hover:text-orange-500">FAQ</Link>
           <Link href="#contact" className="hover:text-orange-500">Связаться</Link>
         </div>
