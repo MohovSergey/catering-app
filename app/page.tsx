@@ -4,6 +4,7 @@ import FloatingContacts from "@/feature/price-calculator/ui/FloatingContacts";
 import About from "./sections/main/About";
 import { Availability } from "./sections/main/Availability";
 import HeroBanner from "./sections/main/Hero";
+import EventsGallery from "@/feature/price-calculator/ui/EventsGallery";
 
 export default function Home() {
   return (
@@ -11,6 +12,7 @@ export default function Home() {
       <Header />
       <HeroBanner />
       <About />
+      <EventsGallery />
       <Availability/>
       <Footer/>
       <FloatingContacts />

@@ -17,10 +17,7 @@ const Header = () => {
           Форматы меню
         </Link>
         <Link href="/menu" className="text-white hover:text-gray-300">
-          Меню с ценами
-        </Link>
-        <Link href="/gallery" className="text-white hover:text-gray-300">
-          Примеры работ
+          Меню и услуги
         </Link>
         <Link href="/faq" className="text-white hover:text-gray-300">
           FAQ
