@@ -6,18 +6,18 @@ interface HeaderProps {
 
 const Header = ({ onOpenModal }: HeaderProps) => {
   return (
-    <header className="w-full h-15 flex items-center justify-between px-6 bg-black max-w-400 mx-auto">
+    <header className="w-full h-15 flex items-center justify-between px-6 bg-stone-50 max-w-400 mx-auto">
       <div className="flex items-center">
         <img src="/logo/logo.svg" alt="Логотип" className="h-10" />
       </div>
 
       <nav className="hidden md:flex space-x-6">
-        <Link href="/" className="text-white hover:text-gray-300">Главная</Link>
-        <Link href="/menu" className="text-white hover:text-gray-300">Меню и услуги</Link>
-        <Link href="/faq" className="text-white hover:text-gray-300">FAQ</Link>
+        <Link href="/" className="text-black hover:text-stone-400">Главная</Link>
+        <Link href="/menu" className="text-black hover:text-stone-400">Меню и услуги</Link>
+        <Link href="/faq" className="text-black hover:text-stone-400">FAQ</Link>
         <button
           onClick={onOpenModal}
-          className="text-white hover:text-gray-300"
+          className="text-black hover:text-stone-400"
         >
           Связаться
         </button>
