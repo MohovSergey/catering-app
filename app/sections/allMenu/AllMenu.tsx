@@ -10,7 +10,7 @@ export default function AllMenu() {
       <div className="max-w-5xl mx-auto px-4 md:px-8 pt-8 flex justify-end">
         <button
           onClick={generateMenuPdf}
-          className="rounded-md bg-amber-500 px-4 py-2 text-sm font-semibold text-black hover:bg-amber-400"
+          className="rounded-md bg-amber-300 px-4 py-2 text-sm font-semibold text-stone-800 hover:bg-amber-400"
         >
           Скачать PDF
         </button>
@@ -19,7 +19,7 @@ export default function AllMenu() {
       <section className="max-w-5xl mx-auto px-4 md:px-8 py-12 space-y-12">
         {MENU.map((section) => (
           <div key={section.id}>
-            <h2 className="mb-6 text-2xl font-semibold text-amber-500">
+            <h2 className="mb-6 text-2xl font-semibold text-stone-500">
               {section.title}
             </h2>
 
@@ -33,7 +33,7 @@ export default function AllMenu() {
                     <div className="flex items-center gap-2">
                       {dish.vegetarian && <FaLeaf className="text-lime-700 w-4 h-4" />}
                       {dish.spicy && <FaPepperHot className="text-red-700 w-4 h-4" />}
-                      <span className="font-medium text-neutral-200">
+                      <span className="font-medium text-stone-800">
                         {dish.name}
                       </span>
                     </div>

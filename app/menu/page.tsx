@@ -5,7 +5,7 @@ import AllMenu from "../sections/allMenu/AllMenu";
 
 export default function Home() {
   return (
-    <div className="w-full bg-gray-800">
+    <div className="w-full bg-stone-50">
       <Header />
       <AllMenu />
       <Footer />
