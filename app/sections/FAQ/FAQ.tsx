@@ -43,8 +43,8 @@ export default function FAQPage() {
   const [openFaq, setOpenFaq] = useState<null | number>(null);
 
   return (
-    <div className="w-full min-h-screen bg-gray-800 text-white px-4 md:px-8 py-12">
-      <h1 className="text-4xl md:text-5xl font-bold text-amber-500 mb-12 text-center">
+    <div className="w-full min-h-screen bg-stone-50 px-4 md:px-8 py-12">
+      <h1 className="text-4xl md:text-5xl font-bold text-amber-300 mb-12 text-center">
         FAQ
       </h1>
 
@@ -55,19 +55,19 @@ export default function FAQPage() {
           {usefulInfo.map((item, idx) => (
             <div
               key={idx}
-              className="bg-gray-900 rounded-xl p-4 cursor-pointer transition"
+              className="bg-stone-100 shadow-lg rounded-xl p-4 cursor-pointer transition"
               onClick={() => setOpenSection(openSection === idx ? null : idx)}
             >
               <div className="flex justify-between items-center">
-                <h3 className="font-medium text-white">{item.question}</h3>
+                <h3 className="font-medium text-stone-500">{item.question}</h3>
                 <FaChevronDown
-                  className={`text-amber-500 transition-transform duration-300 ${
+                  className={`text-stone-500 transition-transform duration-300 ${
                     openSection === idx ? 'rotate-180' : ''
                   }`}
                 />
               </div>
               {openSection === idx && (
-                <p className="mt-2 text-gray-300">{item.answer}</p>
+                <p className="mt-2 text-stone-800">{item.answer}</p>
               )}
             </div>
           ))}
@@ -81,19 +81,19 @@ export default function FAQPage() {
           {faqQuestions.map((item, idx) => (
             <div
               key={idx}
-              className="bg-gray-900 rounded-xl p-4 cursor-pointer transition"
+              className="bg-stone-100 shadow-lg rounded-xl p-4 cursor-pointer transition"
               onClick={() => setOpenFaq(openFaq === idx ? null : idx)}
             >
               <div className="flex justify-between items-center">
-                <h3 className="font-medium text-white">{item.question}</h3>
+                <h3 className="font-medium text-stone-500">{item.question}</h3>
                 <FaChevronDown
-                  className={`text-amber-500 transition-transform duration-300 ${
+                  className={`text-stone-500 transition-transform duration-300 ${
                     openFaq === idx ? 'rotate-180' : ''
                   }`}
                 />
               </div>
               {openFaq === idx && (
-                <p className="mt-2 text-gray-300">{item.answer}</p>
+                <p className="mt-2 text-stone-800">{item.answer}</p>
               )}
             </div>
           ))}

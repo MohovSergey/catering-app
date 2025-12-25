@@ -101,8 +101,8 @@ export default function MenuFormatsCarousel() {
       >
         {EXTENDED_MENUS.map((menu, i) => (
           <div key={i} className="w-full shrink-0 px-4 md:px-8">
-            <div className="mx-auto max-w-3xl rounded-2xl border border-neutral-500 bg-gray-800 p-6 md:p-8">
-              <h2 className="mb-6 text-center text-xl font-semibold md:text-2xl text-amber-500">{menu.title}</h2>
+            <div className="mx-auto max-w-3xl rounded-2xl border border-neutral-500 bg-stone-50 p-6 md:p-8">
+              <h2 className="mb-6 text-center text-xl font-semibold md:text-2xl text-stone-500">{menu.title}</h2>
 
               <ul className="space-y-3">
                 {menu.dishes.map((dish: Dish, j) => (
@@ -111,22 +111,22 @@ export default function MenuFormatsCarousel() {
                     className="flex flex-col gap-1 border-b border-neutral-500 pb-3 md:flex-row md:items-center md:justify-between"
                   >
                     <div>
-                      <p className="font-medium text-neutral-300">{dish.name}</p>
+                      <p className="font-medium ">{dish.name}</p>
                       <p className="text-sm text-neutral-400">{dish.description}</p>
                     </div>
-                    <span className="font-semibold text-neutral-300 whitespace-nowrap">{dish.weight} г</span>
+                    <span className="font-semibold text-stone-500 whitespace-nowrap">{dish.weight} г</span>
                   </li>
                 ))}
               </ul>
 
               <div className="mt-6 space-y-2 border-t border-neutral-500 pt-4">
-                <div className="flex justify-between font-medium text-neutral-300">
+                <div className="flex justify-between font-medium ">
                   <span>Итого вес еды на одного гостя</span>
-                  <span className="text-amber-400">{menu.dishes.reduce((acc, dish) => acc + dish.weight, 0)} г</span>
+                  <span className="">{menu.dishes.reduce((acc, dish) => acc + dish.weight, 0)} г</span>
                 </div>
-                <div className="flex justify-between text-lg font-semibold text-neutral-300">
+                <div className="flex justify-between text-lg font-semibold ">
                   <span>Итого цена на одного гостя</span>
-                  <span className="text-amber-400">{menu.totalPrice}</span>
+                  <span className="">{menu.totalPrice}</span>
                 </div>
               </div>
             </div>

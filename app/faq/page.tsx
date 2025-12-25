@@ -14,7 +14,7 @@ export default function Home() {
   const closeModal = () => setIsModalOpen(false);
 
   return (
-    <div className="w-full bg-gray-800">
+    <div className="w-full bg-stone-50">
 
       <Header onOpenModal={openModal} />
       <FAQPage />

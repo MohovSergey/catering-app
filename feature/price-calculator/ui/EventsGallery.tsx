@@ -31,7 +31,7 @@ export default function EventsGallery() {
   return (
     <section className="relative w-full py-12">
       <div className="mb-6 flex items-center justify-between px-4 md:px-8">
-        <h2 className="text-2xl md:text-3xl font-semibold text-amber-500">
+        <h2 className="text-2xl md:text-3xl font-semibold text-stone-500">
           Наши мероприятия
         </h2>
 

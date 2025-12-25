@@ -6,13 +6,15 @@ import AvailabilityCalendar from "../availability/AvailabilityCalendar";
 
 type BusyDaysMap = Record<string, number[]>;
 
+type Props =  {onOpenModal?: () => void} 
+
 export const busyDaysMap: BusyDaysMap = {
   '2025-12': [6, 13, 19, 24],
   '2026-01': [2, 8, 20],
   '2026-02': [5, 12, 18, 25],
 };
 
-export const Availability = () => {
+export const Availability = ({onOpenModal}: Props) => {
   const today = new Date();
   const [month, setMonth] = useState(today.getMonth() + 1); // 1-12
   const [year, setYear] = useState(today.getFullYear());
@@ -40,11 +42,11 @@ export const Availability = () => {
   const busyDays = busyDaysMap[monthKey] || [];
 
   return (
-    <FlexContainer className="bg-gray-800 flex flex-col pt-10 px-4 md:px-10 lg:px-20">
+    <FlexContainer className="bg-stone-50 flex flex-col pt-10 px-4 md:px-10 lg:px-20">
       <div className="flex flex-col lg:flex-row gap-6">
 
-        <div className="bg-gray-700 text-white p-6 rounded-lg flex-1 min-w-70">
-          <h2 className="text-2xl md:text-3xl font-bold mb-4">Условия заказа</h2>
+        <div className="bg-stone-100 shadow-lg p-6 rounded-lg flex-1 min-w-70">
+          <h2 className="text-2xl text-stone-500 md:text-3xl font-bold mb-4">Условия заказа</h2>
           <p className="mb-4">
             Мы принимаем заказы не позднее чем за 5 дней до мероприятия и при наличии свободных дат.
             В календаре справа отмечены занятые дни, на которые мы к сожалению уже не сможем принять новые брони.
@@ -61,26 +63,26 @@ export const Availability = () => {
         </div>
 
         {/* Календарь */}
-        <div className="bg-gray-700 p-4 rounded-lg flex-1 min-w-70 flex flex-col items-center">
+        <div className="bg-stone-100 shadow-lg p-4 rounded-lg flex-1 min-w-70 flex flex-col items-center">
           <div className="flex justify-between w-full mb-4">
             <button
-              className="bg-gray-600 text-white px-4 py-2 rounded hover:bg-gray-500 transition"
+              className="bg-stone-50 shadow-lg text-stone-500 px-4 py-2 rounded hover:bg-stone-200 transition"
               onClick={handlePrevMonth}
             >
               {"<"}
             </button>
-            <span className="text-white font-semibold text-lg">
+            <span className="text-stone-800 font-semibold text-lg">
               {new Date(year, month - 1).toLocaleString("ru-RU", { month: "long", year: "numeric" })}
             </span>
             <button
-              className="bg-gray-600 text-white px-4 py-2 rounded hover:bg-gray-500 transition"
+              className="bg-stone-50 shadow-md text-stone-500 px-4 py-2 rounded hover:bg-stone-200 transition"
               onClick={handleNextMonth}
             >
               {">"}
             </button>
           </div>
 
-          <AvailabilityCalendar month={month} year={year} busyDays={busyDays} />
+          <AvailabilityCalendar month={month} year={year} busyDays={busyDays} onOpenModal={onOpenModal}/>
         </div>
       </div>
     </FlexContainer>
