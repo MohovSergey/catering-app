@@ -7,14 +7,23 @@ import { generateMenuPdf } from "@/common/shared/lib/generateMenuPdf";
 export default function AllMenu() {
   return (
     <>
-      <div className="max-w-5xl mx-auto px-4 md:px-8 pt-8 flex justify-end">
-        <button
-          onClick={generateMenuPdf}
-          className="rounded-md bg-amber-300 px-4 py-2 text-sm font-semibold text-stone-800 hover:bg-amber-400"
-        >
-          Скачать PDF
-        </button>
-      </div>
+<div className="max-w-5xl mx-auto px-4 md:px-8 pt-8 flex justify-end gap-4">
+  <a
+    href="https://drive.google.com/drive/folders/15EU6Nj27Gw-ATLd7gW_95PYWsgGoB2o-?usp=drive_link"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="rounded-md bg-sky-600 text-stone-50 px-4 py-2 text-sm font-semibold hover:bg-sky-800"
+  >
+    Фото блюд
+  </a>
+
+  <button
+    onClick={generateMenuPdf}
+    className="rounded-md bg-amber-300 px-4 py-2 text-sm font-semibold text-stone-800 hover:bg-amber-400"
+  >
+    Скачать меню
+  </button>
+</div>
 
       <section className="max-w-5xl mx-auto px-4 md:px-8 py-12 space-y-12">
         {MENU.map((section) => (
@@ -43,7 +52,7 @@ export default function AllMenu() {
                   </div>
 
                   <div className="flex flex-col items-end gap-1">
-                    <span className="text-neutral-300">{dish.weight} г</span>
+                    <span className="text-neutral-500">{dish.weight} г</span>
                     <span className="font-semibold text-amber-400">
                       {dish.price}
                     </span>
