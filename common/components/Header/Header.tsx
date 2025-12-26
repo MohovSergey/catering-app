@@ -14,23 +14,20 @@ const Header = ({ onOpenModal }: HeaderProps) => {
   const toggleMenu = () => setIsMenuOpen(prev => !prev);
   const closeMenu = () => setIsMenuOpen(false);
 
-  // Отслеживаем ширину окна
   useEffect(() => {
     const handleResize = () => setWindowWidth(window.innerWidth);
 
-    handleResize(); // установка текущей ширины сразу
+    handleResize();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // Закрываем меню, если экран стал больше md (768px)
   useEffect(() => {
     if (windowWidth >= 768 && isMenuOpen) {
       setIsMenuOpen(false);
     }
   }, [windowWidth, isMenuOpen]);
 
-  // Закрытие меню при клике вне навигации
   const handleBackdropClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     if (e.target === e.currentTarget) {
       closeMenu();
@@ -39,7 +36,6 @@ const Header = ({ onOpenModal }: HeaderProps) => {
 
   return (
     <>
-      {/* Блокируем экран и добавляем блюр при открытом меню на мобильной версии */}
       {isMenuOpen && windowWidth < 768 && (
         <div
           className="fixed inset-0 bg-black/30 backdrop-blur-sm z-40"
@@ -49,8 +45,8 @@ const Header = ({ onOpenModal }: HeaderProps) => {
 
       <div
         className={`
-          fixed top-6 left-1/2 -translate-x-1/2
-          w-[90%] md:w-[80%] lg:w-[80%]
+          fixed top-4 left-1/2 -translate-x-1/2
+          w-[90%] md:w-[70%] lg:w-[70%]
           bg-stone-50
           shadow-lg
           z-50
@@ -58,11 +54,11 @@ const Header = ({ onOpenModal }: HeaderProps) => {
           rounded-2xl
         `}
       >
-        <header className="h-16 flex items-center justify-between px-6 rounded-t-2xl">
+        <header className="h-14 flex items-center justify-between px-6 rounded-t-2xl">
           <img src="/logo/logo.svg" alt="Логотип" className="h-10" />
           <nav className="hidden md:flex space-x-6">
             <Link href="/" className="hover:text-stone-400">Главная</Link>
-            <Link href="/menu" className="hover:text-stone-400">Меню и услуги</Link>
+            <Link href="/menu" className="hover:text-stone-400">Меню кухни</Link>
             <Link href="/faq" className="hover:text-stone-400">FAQ</Link>
             <button onClick={onOpenModal} className="hover:text-stone-400">
               Связаться
@@ -80,7 +76,6 @@ const Header = ({ onOpenModal }: HeaderProps) => {
           </button>
         </header>
 
-        {/* Мобильное меню */}
         <div
           className={`
             md:hidden
@@ -116,3 +111,4 @@ const Header = ({ onOpenModal }: HeaderProps) => {
 };
 
 export default Header;
+

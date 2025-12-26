@@ -3,6 +3,7 @@
 import { useRef } from "react";
 import Image from "next/image";
 import { EVENTS_GALLERY } from "@/feature/model/data/eventsGalleryData";
+import { FlexContainer } from "@/common/components/FlexContainer";
 
 export default function EventsGallery() {
   const scrollRef = useRef<HTMLDivElement | null>(null);
@@ -29,7 +30,8 @@ export default function EventsGallery() {
   };
 
   return (
-    <section className="relative w-full py-12">
+    <FlexContainer>
+      <section className="relative w-full py-12">
       <div className="mb-6 flex items-center justify-between px-4 md:px-8">
         <h2 className="text-2xl md:text-3xl font-semibold text-stone-500">
           Наши мероприятия
@@ -74,5 +76,7 @@ export default function EventsGallery() {
         )}
       </div>
     </section>
+    </FlexContainer>
+    
   );
 }

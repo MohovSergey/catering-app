@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import { MENU, MenuSection, Dish } from "@/feature/model/data/menuData";
+import { FlexContainer } from "@/common/components/FlexContainer";
 
 
 const MENU_CARDS = [
@@ -77,7 +78,8 @@ export default function MenuFormatsCarousel() {
   }, [animate]);
 
   return (
-    <section className="relative w-full overflow-hidden">
+    <FlexContainer>
+          <section className="relative w-full overflow-hidden mt-20">
       {/* arrows */}
       <button
         onClick={prev}
@@ -145,5 +147,7 @@ export default function MenuFormatsCarousel() {
         ))}
       </div>
     </section>
+    </FlexContainer>
+
   );
 }
