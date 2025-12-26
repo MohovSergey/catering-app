@@ -14,6 +14,7 @@ export default function CallRequestModal({ isOpen, onClose }: Props) {
   const [day, setDay] = useState('today');
   const [time, setTime] = useState('');
   const [phone, setPhone] = useState('');
+  const [name, setName] = useState('');
   const [loading, setLoading] = useState(false);
 
   if (!isOpen) return null;
@@ -26,7 +27,7 @@ export default function CallRequestModal({ isOpen, onClose }: Props) {
       const res = await fetch('/api/send-call-request', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ day, time, phone }),
+        body: JSON.stringify({ day, time, phone, name }),
       });
 
       if (res.ok) {
@@ -35,6 +36,7 @@ export default function CallRequestModal({ isOpen, onClose }: Props) {
         setDay('today');
         setTime('');
         setPhone('');
+        setName('')
       } else {
         alert('Ошибка отправки');
       }
@@ -48,13 +50,13 @@ export default function CallRequestModal({ isOpen, onClose }: Props) {
   return (
     <div
       className="fixed inset-0 z-50 flex items-center justify-center bg-black/60"
-      onClick={onClose} // клик по overlay закрывает модалку
+      onClick={onClose}
     >
       <div
         className="bg-gray-900 w-full max-w-md rounded-xl p-6 relative"
-        onClick={(e) => e.stopPropagation()} // предотвращаем закрытие при клике внутри окна
+        onClick={(e) => e.stopPropagation()}
       >
-        {/* Крестик */}
+
         <button
           onClick={onClose}
           className="absolute top-3 right-3 text-gray-400 hover:text-white"
@@ -65,7 +67,7 @@ export default function CallRequestModal({ isOpen, onClose }: Props) {
         <h2 className="text-xl text-white mb-4">Перезвоните мне</h2>
 
         <form onSubmit={handleSubmit} className="space-y-4">
-          {/* День */}
+
           <div>
             <label className="block text-sm text-gray-300 mb-1">
               Перезвоните мне в:
@@ -74,7 +76,7 @@ export default function CallRequestModal({ isOpen, onClose }: Props) {
               <select
                 value={day}
                 onChange={(e) => setDay(e.target.value)}
-                className="w-full bg-gray-800 text-white rounded-lg p-2 appearance-none pr-10" // pr-10 чтобы стрелка не налезала
+                className="w-full bg-gray-800 text-white rounded-lg p-2 appearance-none pr-10" 
               >
                 <option value="today">Сегодня</option>
                 <option value="monday">Понедельник</option>
@@ -85,7 +87,7 @@ export default function CallRequestModal({ isOpen, onClose }: Props) {
                 <option value="saturday">Суббота</option>
                 <option value="sunday">Воскресенье</option>
               </select>
-              {/* Стилизация стрелки */}
+
               <div className="pointer-events-none absolute inset-y-0 right-3 flex items-center">
                 <svg
                   className="w-4 h-4 text-white"
@@ -100,7 +102,7 @@ export default function CallRequestModal({ isOpen, onClose }: Props) {
             </div>
           </div>
 
-          {/* Время */}
+
           <div>
             <label className="block text-sm text-gray-300 mb-1">Время</label>
             <div className="relative">
@@ -117,7 +119,18 @@ export default function CallRequestModal({ isOpen, onClose }: Props) {
             </div>
           </div>
 
-          {/* Телефон */}
+
+          <div>
+            <label className="block text-sm text-gray-300 mb-1">Имя</label>
+            <input
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              className="w-full bg-gray-800 text-white rounded-lg p-2"
+              required
+            />
+          </div>
+
+
           <div>
             <label className="block text-sm text-gray-300 mb-1">Мой телефон:</label>
             <input
@@ -130,7 +143,7 @@ export default function CallRequestModal({ isOpen, onClose }: Props) {
             />
           </div>
 
-          {/* Кнопка */}
+
           <button
             type="submit"
             disabled={loading}

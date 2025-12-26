@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 
 export async function POST(req: Request) {
   try {
-    const { day, time, phone } = await req.json();
+    const { day, time, phone, name } = await req.json();
 
     if (!phone || !time || !day) {
       return NextResponse.json(
@@ -16,6 +16,7 @@ export async function POST(req: Request) {
 
 📅 День: ${day}
 ⏰ Время: ${time}
+👤 Имя: ${name}
 📱 Телефон: ${phone}
     `;
 

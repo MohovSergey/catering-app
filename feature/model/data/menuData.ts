@@ -18,9 +18,9 @@ export interface MenuSection {
 export const MENU: MenuSection[] = [
   {
     id: "cold-appetizers",
-    title: "Холодные закуски",
+    title: "Салаты",
     dishes: [
-      { name: "Сельдь под шубой", description: "lorem vksnvlnsklnv. ln lke e el elk kfen kefkfkfnfn nsemjrghelbn a j. epd nklendljnedlj. e knd nedk ;nkd e kken lenfl.  elknl nlken lkendlk nfelknv nekn enl nel ne ", weight: 130, price: "1555 руб" },
+      { name: "Цезарь с цыпленком", description: "Филе куриное жаренное на гриле, салат, соус Цезарь, сухарики, томаты чери и сыр пармезан", weight: 250, price: "23 руб" },
       { name: "Овощное ассорти", description: "Свежие сезонные овощи", weight: 150, price: "200 руб", vegetarian: true },
       { name: "Мясная нарезка", description: "Ветчина, салями, буженина", weight: 200, price: "450 руб" },
       { name: "Сырная тарелка", description: "Ассорти сыров с сухофруктами", weight: 180, price: "350 руб", vegetarian: true },
