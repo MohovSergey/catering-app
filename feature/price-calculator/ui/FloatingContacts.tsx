@@ -12,16 +12,16 @@ export default function FloatingContacts({ onOpenModal }: FloatingContactsProps)
         href="https://t.me/YourTelegramUsername"
         target="_blank"
         rel="noopener noreferrer"
-        className="bg-white/50 hover:bg-white/70 rounded-full p-3 transition flex items-center justify-center"
+        className="bg-stone-500 shadow-lg hover:bg-stone-500/70 rounded-full p-3 transition flex items-center justify-center"
       >
-        <FaTelegramPlane className="text-white w-5 h-5 md:w-6 md:h-6" />
+        <FaTelegramPlane className="text-stone-50 w-5 h-5 md:w-6 md:h-6" />
       </Link>
 
       <button
         onClick={onOpenModal}
-        className="bg-white/50 hover:bg-white/70 rounded-full p-3 transition flex items-center justify-center"
+        className="bg-stone-500 shadow-lg hover:bg-stone-500/70 rounded-full p-3 transition flex items-center justify-center"
       >
-        <FaPhoneAlt className="text-white w-5 h-5 md:w-6 md:h-6" />
+        <FaPhoneAlt className="text-stone-50 w-5 h-5 md:w-6 md:h-6" />
       </button>
     </div>
   );
